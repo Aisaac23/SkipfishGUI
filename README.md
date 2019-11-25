@@ -1,5 +1,10 @@
 # SkipfishGUI-1.0
 **Graphic User Interface for Skipfish Web Application Security Scanner (by lcamtuf)**
+
+You can find the lcamtuf's tool here:
+https://code.google.com/archive/p/skipfish/
+https://github.com/spinkham/skipfish
+
 This is the first version of this project, I'll be updating this repo monthly.Bellow you'll find a list with some characteristics of the GUI:
 - You can run multiple scans with basic options.
 - Administrative options to manage multiple successive scans through IDs, with easy manipulation of directories.
