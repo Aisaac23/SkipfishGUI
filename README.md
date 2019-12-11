@@ -5,12 +5,12 @@ You can find the lcamtuf's tool here (although you probably already knew it):
 - https://code.google.com/archive/p/skipfish/
 - https://github.com/spinkham/skipfish
 
-This is the first version of this project, I'll be updating this repo monthly. Bellow you'll find a list with some characteristics of the GUI:
+This is the second release of this project, I'll be updating this repo monthly. Bellow you'll find a list with some characteristics of the GUI:
 - You can run multiple scans with basic options.
 - Administrative options to manage multiple successive scans through IDs, with easy manipulation of directories.
 - Easily set output and input dictionaries.
 - Some authentication options: cookies and authentication header.
-- Some performance options easily set through check-box controls.
+- **All the performance options easily set through check-box controls.
 - Buttons to:
   - Execute scan
   - Show command line: input and output
