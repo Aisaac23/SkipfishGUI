@@ -1,4 +1,4 @@
-# SkipfishGUI-1.0
+# SkipfishGUI-1.5
 **Graphic User Interface for Skipfish Web Application Security Scanner (by lcamtuf)**
 
 You can find the lcamtuf's tool here:
@@ -18,6 +18,5 @@ This is the first version of this project, I'll be updating this repo monthly.Be
 - Easily access to generated report through links that open the report file in the default web browser.
 - Input field for the URL or file.
 - User input validation and error handling.
-- The GUI was carefully built with Java Swing, so it's highly maintainable and scalable.
+- The GUI was carefully built with Java Swing so it's highly maintainable and scalable. More versions ahead.
 
-**Note:** If you want the "Stop" button to work you need to have the latest version of skipfish which I'll discribe here and hopefully lcamtuf decides to update the one on his repo. 
