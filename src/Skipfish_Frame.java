@@ -1,26 +1,11 @@
-
 package skipfish_gui;
 
-import java.awt.Component;
-import java.awt.Desktop;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.*;
+import java.io.*;
+import java.net.*;
+import java.util.logging.*;
 import javax.swing.*;
-import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.parser.Element;
 
 /**
  *
@@ -33,25 +18,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
      */
     public Skipfish_Frame() {
         initComponents();
-        
-        jTextPane2.addHyperlinkListener( new HyperlinkListener(){
-            @Override
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-                if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED)
-                    if(Desktop.isDesktopSupported())
-                        try {
-                            Desktop.getDesktop().browse(e.getURL().toURI());
-                        } catch (IOException | URISyntaxException ex) {
-                           
-                        }
-            }
-        } );
-        console = (HTMLDocument)this.jTextPane2.getStyledDocument();
-        
-        
-        this.initilizeThread();
-        
-        
+        this.jButton5.setVisible(false);
     }
 
     /**
@@ -65,6 +32,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
 
         jFileChooser1 = new javax.swing.JFileChooser();
         jFileChooser2 = new javax.swing.JFileChooser();
+        jFileChooser3 = new javax.swing.JFileChooser();
         jFrame1 = new javax.swing.JFrame();
         jPanel19 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -72,6 +40,26 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         filler21 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 15), new java.awt.Dimension(0, 15), new java.awt.Dimension(32767, 15));
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
+        jFrame2 = new javax.swing.JFrame();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jPanel20 = new javax.swing.JPanel();
+        jSpinner2 = new javax.swing.JSpinner();
+        jSpinner3 = new javax.swing.JSpinner();
+        jSpinner4 = new javax.swing.JSpinner();
+        jSpinner5 = new javax.swing.JSpinner();
+        jSpinner6 = new javax.swing.JSpinner();
+        jSpinner7 = new javax.swing.JSpinner();
+        jSpinner8 = new javax.swing.JSpinner();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -130,20 +118,26 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         jCheckBox5 = new javax.swing.JCheckBox();
         filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         jTextField8 = new javax.swing.JTextField();
+        filler22 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        jButton5 = new javax.swing.JButton();
         filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 5));
         jPanel16 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
-        jCheckBox8 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
+        filler23 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(250, 32767));
         jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jPanel17 = new javax.swing.JPanel();
+        filler24 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(250, 32767));
+        jCheckBox9 = new javax.swing.JCheckBox();
+        filler25 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         jSpinner1 = new javax.swing.JSpinner();
+        filler26 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(250, 32767));
+        jButton10 = new javax.swing.JButton();
+        filler27 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(250, 32767));
         jPanel12 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         jTextField7 = new javax.swing.JTextField();
+        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        jButton11 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jButton6 = new javax.swing.JButton();
@@ -151,12 +145,15 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         filler20 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
 
+        jFileChooser1.setApproveButtonToolTipText("Choose");
         jFileChooser1.setDialogTitle("Set project directory");
         jFileChooser1.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
 
         jFileChooser2.setAcceptAllFileFilterUsed(false);
         jFileChooser2.setApproveButtonText("Select");
         jFileChooser2.setFileFilter(new FileNameExtensionFilter("Dictionary files", "wl"));
+
+        jFileChooser3.setApproveButtonText("Select");
 
         jFrame1.setSize(new java.awt.Dimension(500, 700));
         jFrame1.getContentPane().setLayout(new java.awt.GridLayout(1, 1));
@@ -180,7 +177,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
 
         jTextPane2.setEditable(false);
         jTextPane2.setContentType("text/html"); // NOI18N
-        jTextPane2.setText("<html>\n  <head>\n\n  </head>\n\n  <body >\n\n<div id=\"console-id\" style=\"font-family:Monospace; font-weight:bold\">\n\n\n\n</div>\n  </body>\n\n</html>\n");
+        jTextPane2.setText("<html>\n  <head>\n\n  </head>\n  <body>\n <div id=\"console-place\" style=\"font-family:monospaced;font-weight:bold;\">\n<p></p>\n\n\n</div>      \n  \n  </body>\n</html>\n");
         jTextPane2.setMinimumSize(new java.awt.Dimension(6, 300));
         jTextPane2.setPreferredSize(new java.awt.Dimension(6, 300));
         jScrollPane2.setViewportView(jTextPane2);
@@ -188,6 +185,93 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         jPanel19.add(jScrollPane2);
 
         jFrame1.getContentPane().add(jPanel19);
+
+        jFrame2.setTitle("Performance options");
+        jFrame2.setResizable(false);
+        jFrame2.setSize(new java.awt.Dimension(455, 355));
+        jFrame2.getContentPane().setLayout(new javax.swing.BoxLayout(jFrame2.getContentPane(), javax.swing.BoxLayout.X_AXIS));
+
+        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Performance"));
+        jPanel21.setLayout(new javax.swing.BoxLayout(jPanel21, javax.swing.BoxLayout.LINE_AXIS));
+
+        jPanel17.setLayout(new java.awt.GridLayout(9, 1, 5, 5));
+
+        jCheckBox7.setText("Max simultaneous TCP connections (global)");
+        jPanel17.add(jCheckBox7);
+
+        jCheckBox8.setText("Max simultaneous TCP connections (per target IP)");
+        jPanel17.add(jCheckBox8);
+
+        jCheckBox11.setText("Max consecutive HTTP errors before aborting");
+        jPanel17.add(jCheckBox11);
+
+        jCheckBox12.setText("Total request timeout (seconds)");
+        jPanel17.add(jCheckBox12);
+
+        jCheckBox13.setText("Network I/O timeout (seconds)");
+        jPanel17.add(jCheckBox13);
+
+        jCheckBox14.setText("Timeout for idle HTTP connections (seconds)");
+        jPanel17.add(jCheckBox14);
+
+        jCheckBox15.setText("Max length per response to fetch and parse (Bytes)");
+        jPanel17.add(jCheckBox15);
+
+        jCheckBox16.setText("Prevent binary documents from being kept in memory");
+        jPanel17.add(jCheckBox16);
+
+        jCheckBox17.setText("Flush request/response data to disk instead of memory");
+        jPanel17.add(jCheckBox17);
+
+        jPanel21.add(jPanel17);
+
+        jPanel20.setLayout(new java.awt.GridLayout(9, 1, 0, 5));
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 40, 1));
+        jSpinner2.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner2.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner2.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner2);
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jSpinner3.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner3.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner3.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner3);
+
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        jSpinner4.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner4.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner4.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner4);
+
+        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(1, 1, 20, 1));
+        jSpinner5.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner5.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner5.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner5);
+
+        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jSpinner6.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner6.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner6.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner6);
+
+        jSpinner7.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jSpinner7.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner7.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner7.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner7);
+
+        jSpinner8.setModel(new javax.swing.SpinnerNumberModel(1, 1, 200000, 1));
+        jSpinner8.setMaximumSize(new java.awt.Dimension(60, 35));
+        jSpinner8.setMinimumSize(new java.awt.Dimension(60, 35));
+        jSpinner8.setPreferredSize(new java.awt.Dimension(60, 35));
+        jPanel20.add(jSpinner8);
+
+        jPanel21.add(jPanel20);
+
+        jFrame2.getContentPane().add(jPanel21);
 
         jMenuItem1.setAction(new javax.swing.text.DefaultEditorKit.PasteAction());
         jMenuItem1.setText("Paste");
@@ -478,6 +562,10 @@ public class Skipfish_Frame extends javax.swing.JFrame {
 
         jTextField8.setEnabled(false);
         jPanel15.add(jTextField8);
+        jPanel15.add(filler22);
+
+        jButton5.setText("More options...");
+        jPanel15.add(jButton5);
 
         jPanel11.add(jPanel15);
         jPanel11.add(filler15);
@@ -492,13 +580,15 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         jPanel18.setMaximumSize(new java.awt.Dimension(32767, 60));
         jPanel18.setMinimumSize(new java.awt.Dimension(550, 51));
         jPanel18.setPreferredSize(new java.awt.Dimension(550, 51));
-        jPanel18.setLayout(new java.awt.GridLayout(2, 3, 5, 5));
-
-        jCheckBox8.setText("No binary docs in RAM");
-        jPanel18.add(jCheckBox8);
+        jPanel18.setLayout(new javax.swing.BoxLayout(jPanel18, javax.swing.BoxLayout.LINE_AXIS));
 
         jCheckBox6.setText("No extension guessing");
         jPanel18.add(jCheckBox6);
+        jPanel18.add(filler23);
+
+        jCheckBox10.setText("Do not submit forms");
+        jPanel18.add(jCheckBox10);
+        jPanel18.add(filler24);
 
         jCheckBox9.setText("Max requests per second");
         jCheckBox9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -509,28 +599,26 @@ public class Skipfish_Frame extends javax.swing.JFrame {
             }
         });
         jPanel18.add(jCheckBox9);
-
-        jCheckBox10.setText("Do not submit forms");
-        jPanel18.add(jCheckBox10);
-
-        jCheckBox7.setText("Flush request/response data to disk");
-        jPanel18.add(jCheckBox7);
-
-        jPanel16.add(jPanel18);
-
-        jPanel17.setMaximumSize(new java.awt.Dimension(60, 80));
-        jPanel17.setMinimumSize(new java.awt.Dimension(60, 80));
-        jPanel17.setPreferredSize(new java.awt.Dimension(60, 80));
-        jPanel17.setLayout(new javax.swing.BoxLayout(jPanel17, javax.swing.BoxLayout.PAGE_AXIS));
+        jPanel18.add(filler25);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1000, 1));
         jSpinner1.setEnabled(false);
         jSpinner1.setMaximumSize(new java.awt.Dimension(60, 35));
         jSpinner1.setMinimumSize(new java.awt.Dimension(60, 35));
         jSpinner1.setPreferredSize(new java.awt.Dimension(60, 35));
-        jPanel17.add(jSpinner1);
+        jPanel18.add(jSpinner1);
+        jPanel18.add(filler26);
 
-        jPanel16.add(jPanel17);
+        jButton10.setText("More options...");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton10MouseReleased(evt);
+            }
+        });
+        jPanel18.add(jButton10);
+        jPanel18.add(filler27);
+
+        jPanel16.add(jPanel18);
 
         jPanel7.add(jPanel16);
 
@@ -543,12 +631,20 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("URL");
         jPanel12.add(jLabel7);
-        jPanel12.add(filler13);
 
         jTextField7.setComponentPopupMenu(jPopupMenu1);
         jTextField7.setMaximumSize(new java.awt.Dimension(2147483647, 35));
         jTextField7.setPreferredSize(new java.awt.Dimension(6, 35));
         jPanel12.add(jTextField7);
+        jPanel12.add(filler13);
+
+        jButton11.setText("Load from file");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton11MouseReleased(evt);
+            }
+        });
+        jPanel12.add(jButton11);
 
         jPanel7.add(jPanel12);
 
@@ -601,6 +697,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         if(this.jFileChooser1.showOpenDialog(jPanel1) == JFileChooser.APPROVE_OPTION)
             directory= jFileChooser1.getSelectedFile().toString();
         this.jTextField1.setText(directory);
+        
     }//GEN-LAST:event_jButton2MouseReleased
 
     private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
@@ -711,80 +808,41 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private void jButton8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseReleased
        
         if (!this.jButton8.isEnabled()) return;
-
-    
-        if( !new File(this.jTextField4.getText()+"/index.html").isFile())
-        {
-            if(this.vallidateInput() && this.isValidURL(this.jTextField7.getText().trim()))
-            {
-                if(new File(this.jTextField6.getText()).isFile() || !this.jCheckBox2.isSelected())
-                {
-                    this.jButton8.setEnabled(false);
-                    this.recursivelyDisableComponents(this.jPanel2, false);
-                    this.recursivelyDisableComponents(this.jPanel5, false);
-                    
-                    String[] cmds = this.getAllCommands(os.substring(0, 3).toLowerCase());
-                    
-                    this.jTextArea2.setRows(this.jTextArea2.getRows() + 10);
-                    this.jTextArea2.append(this.jTextField2.getText() + "-"+this.jTextField3.getText() + "\n");
-                    this.jTextArea2.append(cmds[0] + "\n\n" + cmds[1] + "\n\n" + cmds[2] 
-                            + "\n\n" + cmds[3] + "\n\n");
-                    
-                    switch(os.substring(0, 3).toLowerCase())
-                    {
-                        case "win":
-                            commandArray = new String[]{"cmd.exe", "/c", cmds[0] +
-                                    " & "+ cmds[1]+" & "+ cmds[2] +" & "+ cmds[3]};
-                            break;
-                        case "lin":
-                            commandArray = new String[]{"bash", "-c", cmds[0] +
-                                    " ; "+ cmds[1]+" ; "+ cmds[2] +" ; "+ cmds[3]};
-                            break;
-                        case "mac":
-                            commandArray = new String[]{"bash", "-c", cmds[0] +
-                                    " ; "+ cmds[1]+" ; "+ cmds[2] +" ; "+ cmds[3]};
-                            break;
-                        case "bsd":
-                            break;
-                    }      
-                    JOptionPane.showMessageDialog(null,"Starting scanner, please stand by...");
-                    
-                    this.initilizeThread();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Skipfish_Frame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    stopped = false;
-                    scanner.start();
-                    
-                }
-                else if(this.jCheckBox2.isSelected())
-                    JOptionPane.showMessageDialog(null, "Please, either provide a valid "
-                            + "Input Dictionary or disable the option.");
-            }
-            else if(!this.vallidateInput())
-                JOptionPane.showMessageDialog(null, "Please fill all the required fields.");
-            else
-                JOptionPane.showMessageDialog(null, "Please doble check the URL");
-        }
-        else if(JOptionPane.showConfirmDialog(this,"There is a report with this "
-                + "name and ID already! Do you want to change the ID?") == JOptionPane.OK_OPTION)
-        {
-            jTextField2.setText(String.valueOf((int)(Math.random()*1000+1)).concat("0000").substring(0, 4));
-            this.jTextField3.requestFocus();
-        }
-        else
-            JOptionPane.showMessageDialog(null, "OK, then change the path manually before pressing the \"Run\" button.");
         
-            
+        if(this.checkBeforeRun())
+        {
+            this.jButton8.setEnabled(false);
+            recursivelyDisableComponents(this.jPanel2, false);
+            recursivelyDisableComponents(this.jPanel5, false);
+
+            String[] cmds = this.getAllCommands(os.substring(0, 3).toLowerCase());
+
+            this.jTextArea2.setRows(this.jTextArea2.getRows() + 10);
+            this.jTextArea2.append(this.jTextField2.getText() + "-"+this.jTextField3.getText() + "\n");
+            this.jTextArea2.append(cmds[0] + "\n\n" + cmds[1] + "\n\n" + cmds[2] 
+                    + "\n\n" + cmds[3] + "\n\n");
+
+            commandArray = new String[]{"bash", "-c", cmds[0] + " ; "+ cmds[1]+
+                    " ; "+ cmds[2] +" ; "+ cmds[3]};
+            this.hangOn(10000);
+
+            this.skipfish =new SkipfishProcess(this.jTextPane2, "JavaSkipfish");
+            this.skipfish.setJTextFields(jTextField2, jTextField3, jTextField4);
+            this.skipfish.setJFrameConsole(jFrame1);
+            this.skipfish.setJButtons(jButton6, jButton8);
+            this.skipfish.setJPanels(jPanel2, jPanel5);
+
+            this.skipfish.startSkipfish(commandArray);
+
+            String message = "Skipfish has started, it'll start scanning in 60 seconds.\n"
+                    + "Press the \"Stop\" button to interrupt at any moment.";
+            JOptionPane.showMessageDialog(null, message);
+        }   
     }//GEN-LAST:event_jButton8MouseReleased
 
     private void jButton7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseReleased
-        
+      
         this.jFrame1.setVisible(true);
-       
         
     }//GEN-LAST:event_jButton7MouseReleased
 
@@ -794,36 +852,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         
         if(JOptionPane.showConfirmDialog(this,"Are you sure you want to interrupt Skipfish?") == JOptionPane.OK_OPTION)
         {
-            this.jButton6.setEnabled(false);
-            this.stopped = true;
-
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            String[] cancelScanner = {"","",""};
-            switch(os.substring(0, 3).toLowerCase())
-            {
-                case "win":
-                    cancelScanner = new String[]{"cmd.exe", "/c", "taskkill /PID " + this.PID};
-                    break;
-                case "lin":
-                    cancelScanner = new String[]{"bash", "-c", "kill -2 " + this.PID};
-                    break;
-                case "mac":
-                    cancelScanner = new String[]{"bash", "-c", "kill -2 " + this.PID};
-                    break;
-                case "bsd":
-                    break;
-            }
-            
-            processBuilder.command(cancelScanner[0], cancelScanner[1], cancelScanner[2]);
-            try {
-                processBuilder.start();
-                JOptionPane.showMessageDialog(null,"Skipfish has stopped, saving your report...");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Operative System not supported... yet");
-            }
-            
-              
-            
+            this.skipfish.smoothlyStop();
         }
     }//GEN-LAST:event_jButton6MouseReleased
 
@@ -841,6 +870,20 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCheckBox2StateChanged
 
+    private void jButton11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseReleased
+       if (!this.jButton11.isEnabled()) return;
+
+        String directory = jTextField7.getText();
+        if(this.jFileChooser3.showOpenDialog(jPanel1) == JFileChooser.APPROVE_OPTION)
+            directory= jFileChooser3.getSelectedFile().toString();
+        this.jTextField7.setText(directory);
+        
+    }//GEN-LAST:event_jButton11MouseReleased
+
+    private void jButton10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseReleased
+         this.jFrame2.setVisible(true);
+    }//GEN-LAST:event_jButton10MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -852,20 +895,16 @@ public class Skipfish_Frame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("GTK+".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Skipfish_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Skipfish_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Skipfish_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Skipfish_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -876,93 +915,16 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         });
     }
     
-    private void appendToPane(String s)
-    {
-        try {
-            console.insertBeforeEnd(console.getElement("console-id"), s);
-        } catch (BadLocationException | IOException ex) {
-            Logger.getLogger(Skipfish_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
-    private void recursivelyDisableComponents(JComponent comp, boolean disEn)
+    protected static void recursivelyDisableComponents(JComponent comp, boolean disEn)
     {
         synchronized(comp.getTreeLock()) {
             if(comp.getComponentCount() > 1)
                 for (Component c : comp.getComponents())
                 {
                     c.setEnabled(disEn);
-                    this.recursivelyDisableComponents((JComponent)c, disEn);
+                    recursivelyDisableComponents((JComponent)c, disEn);
                 }
         }
-        
-    }
-    
-    public void initilizeThread()
-    {
-        scanner = new Thread(new Runnable(){
-            @Override
-            public void run()
-            {
-
-                ProcessBuilder processBuilder = new ProcessBuilder();
-                processBuilder.command(commandArray[0], commandArray[1], commandArray[2]);
-                try
-                {
-                    skipfish = processBuilder.start();
-                    
-                    
-                    BufferedReader reader = new BufferedReader(
-                    new InputStreamReader( skipfish.getInputStream() ) );
-
-                    String line;
-                    while( (line = reader.readLine() ) != null )
-                    {
-                        if(!stopped)
-                        {
-                            
-                            if(line.equals("\n"))
-                                appendToPane("<br>");
-                            else
-                                appendToPane("<p>" + line + "</p>");
-                            if(line.contains("PID:"))
-                            {
-                                PID = line.substring(line.indexOf("PID: ") );
-                                PID = PID.replaceAll("\\D", "");
-                                jButton6.setEnabled(true);
-                            }
-                        }
-                    }
-                    
-                    appendToPane("<br><br><b>You may see the reports here: </b>"
-                            + "<ul style=\"list-style-type:disc;\">");
-                    reports.add("<li><a href=\"" + new File(jTextField4.getText()).toURI().toURL() + 
-                        "index.html" + "\">" + jTextField2.getText()+ "-" + 
-                        jTextField3.getText() + "</a></li>");
-                    for(String report: reports)
-                        appendToPane(report);
-                    appendToPane("</ul><br><br>");   
-
-                        JOptionPane.showMessageDialog(null, "Skipfish finished! You may now see the report.");
-                        jTextPane2.setCaretPosition(console.getLength());
-                }
-                catch (IOException ex){
-                    JOptionPane.showMessageDialog(null,ex.getMessage());
-                }
-                
-                jFrame1.setVisible(true);
-                jTextPane2.requestFocus();
-                jButton8.setEnabled(true);
-                jButton6.setEnabled(false);
-                
-                recursivelyDisableComponents(jPanel2, true);
-                recursivelyDisableComponents(jPanel5, true);
-
-            }
-
-
-        });
     }
     
     private boolean vallidateInput()
@@ -977,12 +939,77 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     
     private boolean isValidURL(String urlStr) {
         try {
-            new URL(urlStr);
+            URL testURL;
+            testURL = new URL(urlStr);
           return true;
         }
         catch (MalformedURLException e) {
             return false;
         }
+    }
+    
+    private boolean readURLs(String URLs)
+    {
+        if( !new File( URLs ).isFile())
+            return this.isValidURL(URLs);
+        else
+        {
+            BufferedReader br = null;
+            try {
+            
+                File file = new File(URLs);
+                br = new BufferedReader(new FileReader(file));
+                String st;
+                while ((st = br.readLine()) != null)
+                    if( !this.isValidURL(st) )
+                        return false;
+
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(null, "Please doble check the file: " + ex.getMessage());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "There something wrong with the file: " + ex.getMessage());
+            } finally {
+                try {
+                    br.close();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "There something wrong with the file: " + ex.getMessage());
+                }
+            }
+            return true;
+        }
+    }
+    
+    private boolean checkBeforeRun()
+    {
+        boolean goAhead = true;
+        
+        if( new File(this.jTextField4.getText()+"/index.html").isFile() )
+            goAhead = false;
+        if( !this.vallidateInput() )
+            goAhead = false;
+        if( !new File(this.jTextField6.getText()).isFile() && this.jCheckBox2.isSelected())
+            goAhead = false;
+        if( !this.readURLs( this.jTextField7.getText().trim() ) )
+            goAhead = false;
+        
+        if( !new File(this.jTextField6.getText()).isFile() && this.jCheckBox2.isSelected())
+            JOptionPane.showMessageDialog(null, "Please, either provide a valid "
+                            + "Input Dictionary or disable the option.");
+        else if( !this.vallidateInput() )
+                JOptionPane.showMessageDialog(null, "Please fill all the required fields.");
+        else if( !this.readURLs( this.jTextField7.getText().trim() ) )
+                JOptionPane.showMessageDialog(null, "Please doble check the URL");
+        else if( new File(this.jTextField4.getText()+"/index.html").isFile() )
+            if(JOptionPane.showConfirmDialog(this,"There is a report with this "
+                + "name and ID already! Do you want to change the ID?") == JOptionPane.OK_OPTION)
+            {
+                jTextField2.setText(String.valueOf((int)(Math.random()*1000+1)).concat("0000").substring(0, 4));
+                this.jTextField3.requestFocus();
+            }
+            else
+                JOptionPane.showMessageDialog(null, "OK, then change the path manually before pressing the \"Run\" button.");
+        
+        return goAhead;
     }
     
     private String[] getAllCommands(String os)
@@ -994,29 +1021,10 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         touchCommand = "touch ";
         mainCommand = "skipfish ";
         
-        switch(os)
-        {
-            case "win":
-                mkdirAux = this.mkdirCommand + this.jTextField5.getText();
-                this.mkdirCommand = this.mkdirCommand + this.jTextField4.getText();
-                this.touchCommand = this.touchCommand.replace("touch", "type nul >>") + 
-                        this.jTextField5.getText() + "/"+ this.outputfile;
-                
-                break;
-            case "lin":
-                mkdirAux = this.mkdirCommand + "-p " + this.jTextField5.getText();
-                this.mkdirCommand = this.mkdirCommand + "-p " + this.jTextField4.getText();
-                this.touchCommand = this.touchCommand + this.jTextField5.getText() + "/"+ this.outputfile;
-                
-                break;
-            case "mac":
-                mkdirAux = this.mkdirCommand + "-p " + this.jTextField5.getText();
-                this.mkdirCommand = this.mkdirCommand + "-p " + this.jTextField4.getText();
-                this.touchCommand = this.touchCommand + this.jTextField5.getText() + "/"+ this.outputfile;
-                break;
-            case "bsd":
-                break;
-        }
+        mkdirAux = this.mkdirCommand + "-p " + this.jTextField5.getText();
+        this.mkdirCommand = this.mkdirCommand + "-p " + this.jTextField4.getText();
+        this.touchCommand = this.touchCommand + this.jTextField5.getText() + "/"+ this.outputfile;
+             
         this.getMainCommand();
         
         commands[0] = this.mkdirCommand;
@@ -1025,6 +1033,15 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         commands[3] = this.mainCommand;
         
         return commands;
+    }
+    
+    private void hangOn(int time)
+    {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(SkipfishProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void getMainCommand()
@@ -1047,19 +1064,44 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         if( this.jCheckBox6.isSelected() )
             this.mainCommand = this.mainCommand.concat("-Y ");
         
-        if( this.jCheckBox7.isSelected() )
-            this.mainCommand = this.mainCommand.concat("--flush-to-disk ");
-        
-        if( this.jCheckBox8.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-e ");
-        
         if( this.jCheckBox9.isSelected() )
             this.mainCommand = this.mainCommand.concat("-l " + this.jSpinner1.getValue().toString() + " ");
         
+        if( this.jCheckBox7.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-g " + this.jSpinner2.getValue().toString() + " ");
+        
+        if( this.jCheckBox8.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-m " + this.jSpinner3.getValue().toString() + " ");
+        
+        if( this.jCheckBox11.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-f " + this.jSpinner4.getValue().toString() + " ");
+        
+        if( this.jCheckBox12.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-t " + this.jSpinner5.getValue().toString() + " ");
+        
+        if( this.jCheckBox13.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-w " + this.jSpinner6.getValue().toString() + " ");
+        
+        if( this.jCheckBox14.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-i " + this.jSpinner7.getValue().toString() + " ");
+        
+        if( this.jCheckBox15.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-s " + this.jSpinner8.getValue().toString() + " ");
+        
+        if( this.jCheckBox16.isSelected() )
+            this.mainCommand = this.mainCommand.concat("-e ");
+        
+        if( this.jCheckBox17.isSelected() )
+            this.mainCommand = this.mainCommand.concat("--flush-to-disk ");
+        
         if( this.jCheckBox10.isSelected() )
             this.mainCommand = this.mainCommand.concat("-O ");
-
-        this.mainCommand = this.mainCommand.concat(this.jTextField7.getText());
+        
+        String urls = this.jTextField7.getText();
+        if( !new File( urls ).isFile())
+            this.mainCommand = this.mainCommand.concat( urls );
+        else
+            this.mainCommand = this.mainCommand.concat( "@"+urls );
         
     }
 
@@ -1078,6 +1120,12 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler20;
     private javax.swing.Box.Filler filler21;
+    private javax.swing.Box.Filler filler22;
+    private javax.swing.Box.Filler filler23;
+    private javax.swing.Box.Filler filler24;
+    private javax.swing.Box.Filler filler25;
+    private javax.swing.Box.Filler filler26;
+    private javax.swing.Box.Filler filler27;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
@@ -1086,15 +1134,25 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -1105,7 +1163,9 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;
+    private javax.swing.JFileChooser jFileChooser3;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1128,6 +1188,8 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1140,6 +1202,13 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinner5;
+    private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JSpinner jSpinner7;
+    private javax.swing.JSpinner jSpinner8;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
@@ -1159,14 +1228,8 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private String mkdirCommand = "mkdir ";
     private String touchCommand = "touch ";
     private String mainCommand = "skipfish ";
-    private String commandArray[];
     private String cookies = "";
     private final String os = System.getProperty("os.name");
-    private Process skipfish;
-    private Thread scanner;
-    private HTMLDocument console;
-    private String PID;
-    private boolean stopped = false;
-    private List<String> reports = new ArrayList<>();
-    
+    private String[] commandArray;
+    private SkipfishProcess skipfish;
 }
