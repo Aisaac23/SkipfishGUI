@@ -20,3 +20,10 @@ This is the second release of this project, I'll be updating this repo monthly. 
 - User input validation and error handling.
 - The GUI was carefully built with Java Swing so it's highly maintainable and scalable. More versions ahead.
 
+## Features pending for next releases:
+- Some authentication options.
+- All of the crawl and scope options.
+- most of the reporting options
+- Some of the dictionary management options.
+- /-k option
+- Multiple parallel scans in a single instance. For now you need to open multiple instances for parallel scans, but you can run consecutive scans in one instance.
