@@ -10,7 +10,7 @@ This is the second release of this project, I'll be updating this repo monthly. 
 - Administrative options to manage multiple successive scans through IDs, with easy manipulation of directories.
 - Easily set output and input dictionaries.
 - Some authentication options: cookies and authentication header.
-- **All the performance options easily set through check-box controls.
+- **All the performance options easily set through check-box controls.**
 - Buttons to:
   - Execute scan
   - Show command line: input and output
