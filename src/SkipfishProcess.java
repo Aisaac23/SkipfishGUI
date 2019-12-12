@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package skipfish_gui;
 
 import java.awt.Desktop;
@@ -21,10 +16,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import static skipfish_gui.Skipfish_Frame.recursivelyDisableComponents;
 
-/**
- *
- * @author root
- */
 public class SkipfishProcess extends Thread {
     
     private JTextPane consolePane;
