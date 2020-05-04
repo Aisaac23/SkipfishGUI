@@ -1,4 +1,4 @@
-package skipfish_gui;
+package skipfishgui2;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
-import static skipfish_gui.Skipfish_Frame.recursivelyDisableComponents;
+import static skipfishgui2.Skipfish_Frame.recursivelyDisableComponents;
 
 public class SkipfishProcess extends Thread {
     

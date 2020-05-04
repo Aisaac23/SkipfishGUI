@@ -1,4 +1,4 @@
-package skipfish_gui;
+package skipfishgui2;
 
 import java.awt.*;
 import java.io.*;
@@ -19,6 +19,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     public Skipfish_Frame() {
         initComponents();
         this.jButton5.setVisible(false);
+        this.mainCommand = new StringBuffer(FValues.skipfish + " ");
     }
 
     /**
@@ -728,7 +729,8 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         
         this.jTextField4.setText(outputDir);
         this.jTextField5.setText(outputDic);
-        this.outputfile = ".wl";
+        this.outputfile = FValues.output_ext;
+        
         this.outputfile = this.jTextField2.getText() + "-" + this.jTextField3.getText() + this.outputfile;
         }
         
@@ -801,7 +803,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
             
         }
         else if(!this.jTextArea1.getText().isEmpty())
-            JOptionPane.showMessageDialog(null, "Please follow the format for all your cookies.");
+            JOptionPane.showMessageDialog(null, FValues.wrong_cookies_format);
         
     }//GEN-LAST:event_jTextArea1FocusLost
 
@@ -822,9 +824,10 @@ public class Skipfish_Frame extends javax.swing.JFrame {
             this.jTextArea2.append(cmds[0] + "\n\n" + cmds[1] + "\n\n" + cmds[2] 
                     + "\n\n" + cmds[3] + "\n\n");
 
-            commandArray = new String[]{"bash", "-c", cmds[0] + " ; "+ cmds[1]+
+            commandArray = new String[]{FValues.bash, FValues.bash_c, cmds[0] + " ; "+ cmds[1]+
                     " ; "+ cmds[2] +" ; "+ cmds[3]};
-            this.hangOn(10000);
+            
+            this.hangOn(FValues.ONE_K);
 
             this.skipfish =new SkipfishProcess(this.jTextPane2, "JavaSkipfish");
             this.skipfish.setJTextFields(jTextField2, jTextField3, jTextField4);
@@ -834,9 +837,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
 
             this.skipfish.startSkipfish(commandArray);
 
-            String message = "Skipfish has started, it'll start scanning in 60 seconds.\n"
-                    + "Press the \"Stop\" button to interrupt at any moment.";
-            JOptionPane.showMessageDialog(null, message);
+            JOptionPane.showMessageDialog(null, FValues.start_message);
         }   
     }//GEN-LAST:event_jButton8MouseReleased
 
@@ -850,7 +851,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         
         if (!this.jButton6.isEnabled()) return;
         
-        if(JOptionPane.showConfirmDialog(this,"Are you sure you want to interrupt Skipfish?") == JOptionPane.OK_OPTION)
+        if(JOptionPane.showConfirmDialog(this, FValues.confirm_interrupt ) == JOptionPane.OK_OPTION)
         {
             this.skipfish.smoothlyStop();
         }
@@ -965,14 +966,15 @@ public class Skipfish_Frame extends javax.swing.JFrame {
                         return false;
 
             } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Please doble check the file: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, FValues.generic_file_message1 + ex.getMessage());
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "There something wrong with the file: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, FValues.generic_file_message2 + ex.getMessage());
             } finally {
                 try {
                     br.close();
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "There something wrong with the file: " + ex.getMessage());
+                    
+                    JOptionPane.showMessageDialog(null, FValues.generic_file_message2 + ex.getMessage());
                 }
             }
             return true;
@@ -983,7 +985,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     {
         boolean goAhead = true;
         
-        if( new File(this.jTextField4.getText()+"/index.html").isFile() )
+        if( new File(this.jTextField4.getText() + FValues.indexHTML).isFile() )
             goAhead = false;
         if( !this.vallidateInput() )
             goAhead = false;
@@ -993,21 +995,19 @@ public class Skipfish_Frame extends javax.swing.JFrame {
             goAhead = false;
         
         if( !new File(this.jTextField6.getText()).isFile() && this.jCheckBox2.isSelected())
-            JOptionPane.showMessageDialog(null, "Please, either provide a valid "
-                            + "Input Dictionary or disable the option.");
+            JOptionPane.showMessageDialog( null, FValues.invalid_input_dictionary );
         else if( !this.vallidateInput() )
-                JOptionPane.showMessageDialog(null, "Please fill all the required fields.");
+                JOptionPane.showMessageDialog( null, FValues.empty_required_field );
         else if( !this.readURLs( this.jTextField7.getText().trim() ) )
-                JOptionPane.showMessageDialog(null, "Please doble check the URL");
-        else if( new File(this.jTextField4.getText()+"/index.html").isFile() )
-            if(JOptionPane.showConfirmDialog(this,"There is a report with this "
-                + "name and ID already! Do you want to change the ID?") == JOptionPane.OK_OPTION)
+                JOptionPane.showMessageDialog( null, FValues.wrong_url );
+        else if( new File( this.jTextField4.getText()+FValues.wrong_url ).isFile() )
+            if(JOptionPane.showConfirmDialog( this, FValues.duplicate_report ) == JOptionPane.OK_OPTION)
             {
-                jTextField2.setText(String.valueOf((int)(Math.random()*1000+1)).concat("0000").substring(0, 4));
+                jTextField2.setText(String.valueOf( (int)(Math.random()*FValues.ONE_K+1) ).concat( FValues.baseZeros ).substring(0, 4));
                 this.jTextField3.requestFocus();
             }
             else
-                JOptionPane.showMessageDialog(null, "OK, then change the path manually before pressing the \"Run\" button.");
+                JOptionPane.showMessageDialog( null, FValues.manual_duplicate_change );
         
         return goAhead;
     }
@@ -1017,12 +1017,11 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         String[] commands = new String [4];
         String mkdirAux = "";
         
-        mkdirCommand = "mkdir ";
-        touchCommand = "touch ";
-        mainCommand = "skipfish ";
+        mkdirCommand = FValues.mkdir + " ";
+        touchCommand = FValues.touch + " ";
         
-        mkdirAux = this.mkdirCommand + "-p " + this.jTextField5.getText();
-        this.mkdirCommand = this.mkdirCommand + "-p " + this.jTextField4.getText();
+        mkdirAux = this.mkdirCommand + FValues.bash_p + " " + this.jTextField5.getText();
+        this.mkdirCommand = this.mkdirCommand + FValues.bash_p + " " + this.jTextField4.getText();
         this.touchCommand = this.touchCommand + this.jTextField5.getText() + "/"+ this.outputfile;
              
         this.getMainCommand();
@@ -1030,12 +1029,12 @@ public class Skipfish_Frame extends javax.swing.JFrame {
         commands[0] = this.mkdirCommand;
         commands[1] = mkdirAux;
         commands[2] = this.touchCommand;
-        commands[3] = this.mainCommand;
+        commands[3] = this.mainCommand.substring(0);
         
         return commands;
     }
     
-    private void hangOn(int time)
+    private void hangOn(long time)
     {
         try {
             Thread.sleep(time);
@@ -1046,62 +1045,62 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     
     public void getMainCommand()
     {
-        this.mainCommand = this.mainCommand.concat("-o '" + this.jTextField4.getText() + "' " );
-        this.mainCommand = this.mainCommand.concat("-W '" + this.jTextField5.getText() + "/" +this.outputfile + "' ");
+        this.mainCommand.append( FValues.o + " '" + this.jTextField4.getText() + "' " );
+        this.mainCommand.append( FValues.W + " '" + this.jTextField5.getText() + "' " );
         
         if( this.jCheckBox2.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-S '" + this.jTextField6.getText() + "' ");
+            this.mainCommand.append( FValues.S + " '" + this.jTextField6.getText() + "' " );
         
         if( this.jCheckBox3.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-N ");
+            this.mainCommand.append( FValues.N + "' " );
         
         if( this.jCheckBox4.isSelected() )
-            this.mainCommand = this.mainCommand.concat( "-C '" + this.cookies + "' ");
+            this.mainCommand.append( FValues.C + " '" + this.jTextField6.getText() + "' " );
         
         if( this.jCheckBox5.isSelected() )
-            this.mainCommand = this.mainCommand.concat( "-H " + this.jTextField8.getText().replaceFirst(":", "=") + " ");
+            this.mainCommand.append( FValues.H + " '" + this.jTextField8.getText() + "' " );
         
         if( this.jCheckBox6.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-Y ");
+            this.mainCommand.append( FValues.Y + "' " );
         
         if( this.jCheckBox9.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-l " + this.jSpinner1.getValue().toString() + " ");
+            this.mainCommand.append( FValues.l + " '" + this.jSpinner1.getValue().toString() + "' " );
         
         if( this.jCheckBox7.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-g " + this.jSpinner2.getValue().toString() + " ");
+            this.mainCommand.append( FValues.g + " '" + this.jSpinner2.getValue().toString() + "' " );
         
         if( this.jCheckBox8.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-m " + this.jSpinner3.getValue().toString() + " ");
+            this.mainCommand.append( FValues.m + " '" + this.jSpinner3.getValue().toString() + "' " );
         
         if( this.jCheckBox11.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-f " + this.jSpinner4.getValue().toString() + " ");
+            this.mainCommand.append( FValues.f + " '" + this.jSpinner4.getValue().toString() + "' " );
         
         if( this.jCheckBox12.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-t " + this.jSpinner5.getValue().toString() + " ");
+            this.mainCommand.append( FValues.t + " '" + this.jSpinner5.getValue().toString() + "' " );
         
         if( this.jCheckBox13.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-w " + this.jSpinner6.getValue().toString() + " ");
+            this.mainCommand.append( FValues.w + " '" + this.jSpinner6.getValue().toString() + "' " );
         
         if( this.jCheckBox14.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-i " + this.jSpinner7.getValue().toString() + " ");
+            this.mainCommand.append( FValues.i + " '" + this.jSpinner7.getValue().toString() + "' " );
         
         if( this.jCheckBox15.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-s " + this.jSpinner8.getValue().toString() + " ");
-        
+            this.mainCommand.append( FValues.s + " '" + this.jSpinner8.getValue().toString() + "' " );
+                
         if( this.jCheckBox16.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-e ");
+            this.mainCommand.append( FValues.e + "' " );
         
         if( this.jCheckBox17.isSelected() )
-            this.mainCommand = this.mainCommand.concat("--flush-to-disk ");
+            this.mainCommand.append( FValues.flush + "' " );
         
         if( this.jCheckBox10.isSelected() )
-            this.mainCommand = this.mainCommand.concat("-O ");
+            this.mainCommand.append( FValues.O + "' " );
         
         String urls = this.jTextField7.getText();
         if( !new File( urls ).isFile())
-            this.mainCommand = this.mainCommand.concat( urls );
+            this.mainCommand.append( urls );
         else
-            this.mainCommand = this.mainCommand.concat( "@"+urls );
+            this.mainCommand.append( "@"+urls );
         
     }
 
@@ -1227,7 +1226,7 @@ public class Skipfish_Frame extends javax.swing.JFrame {
     private String outputfile = "newWords.wl";
     private String mkdirCommand = "mkdir ";
     private String touchCommand = "touch ";
-    private String mainCommand = "skipfish ";
+    private StringBuffer mainCommand;
     private String cookies = "";
     private final String os = System.getProperty("os.name");
     private String[] commandArray;
