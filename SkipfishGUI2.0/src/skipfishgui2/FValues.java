@@ -12,24 +12,23 @@ package skipfishgui2;
  */
 public final class FValues {
     
-    protected static final String o = "-o";
-    protected static final String W = "-W";
-    protected static final String S = "-S";
-    protected static final String N = "-N";
-    protected static final String C = "-C";
-    protected static final String H = "-H";
-    protected static final String Y = "-Y";
-    protected static final String l = "-l";
-    protected static final String g = "-g";
-    protected static final String m = "-m";
-    protected static final String f = "-f";
-    protected static final String t = "-t";
-    protected static final String w = "-w";
-    protected static final String i = "-i";
-    protected static final String s = "-s";
-    protected static final String e = "-e";
-    protected static final String O = "-O";
-    protected static final String P = "-p";
+    protected static final String o = "-o"; // write output to specified directory (required)
+    protected static final String W = "-W"; // use a specified read\-write wordlist (required)
+    protected static final String S = "-S"; // load a supplemental read\-only wordlist
+    protected static final String N = "-N"; // do not accept any new cookies
+    protected static final String C = "-C"; // append a custom cookie to all requests
+    protected static final String H = "-H"; // append a custom HTTP header to all requests
+    protected static final String Y = "-Y"; // do not fuzz extensions in directory brute\-force
+    protected static final String l = "-l"; // max requests per second (0\..000000)
+    protected static final String g = "-g"; // max simultaneous TCP connections, global (40)
+    protected static final String m = "-m"; // max simultaneous connections, per target IP (10)
+    protected static final String f = "-f"; // max number of consecutive HTTP errors (100)
+    protected static final String t = "-t"; // total request response timeout (20 s)
+    protected static final String w = "-w"; // individual network I/O timeout (10 s)
+    protected static final String i = "-i"; // timeout on idle HTTP connections (10 s)
+    protected static final String s = "-s"; // response size limit (200000 B)
+    protected static final String e = "-e"; // do not keep binary responses for reporting
+    protected static final String O = "-O"; // do not submit any forms
     
     protected static final String RESULTS = "/Results";
     protected static final String LEARNED = "/LearnedWords";
@@ -45,7 +44,7 @@ public final class FValues {
     
     protected static final String os = System.getProperty("os.name");
 
-    protected static final String flush = "--flush-to-disk";
+    protected static final String flush = "--flush-to-disk"; /*This causes request / response data to be flushed to disk instead of being kept in memory. As a result, the memory usage for large scans will be significant lower.*/
     protected static final String indexHTML = "/index.html";
     
     protected static final long ONE_K = 1000;
